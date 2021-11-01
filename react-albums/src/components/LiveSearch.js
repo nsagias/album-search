@@ -12,9 +12,10 @@ export default function LiveSearch(props) {
   useEffect(() => {
     const testURL = `https://itunes.apple.com/search?term=${term}&country=CA&media=music&entity=album&attribute=artistTerm`;
     axios.get(testURL).then(response => {
+      setResults([...response.data.results])
       console.log(response.data.results);
     });
-  }, []);
+  }, [term]);
 
   return (
     <Fragment>
